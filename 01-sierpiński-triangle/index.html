@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sierpiński triangle</title>
+  </head>
+  <body>
+    <div id="dotContainer">
+      <div class="dot" id="dotA"></div>
+      <span class="textA">A</span>
+      <div class="line lineAT"></div>
+      <div class="dot" id="dotB"></div>
+      <span class="textB">B</span>
+      <div class="line lineBT"></div>
+      <div class="dot" id="dotC"></div>
+      <span class="textC">C</span>
+      <div class="line lineCT"></div>
+    </div>
+  </body>
+</html>
+<style>
+  #dotContainer {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .dot {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+  }
+
+  #dotA {
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: red;
+  }
+
+  .textA {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin-top: 8px;
+  }
+
+  .textB {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translate(-50%, 0);
+    margin-bottom: 8px;
+  }
+
+  .textC {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translate(-50%, 0);
+    margin-bottom: 8px;
+  }
+
+  #dotB {
+    bottom: 0;
+    left: 0;
+    background-color: blue;
+    transform: translate(-50%, 0);
+  }
+
+  #dotC {
+    bottom: 0;
+    right: 0;
+    background-color: green;
+    transform: translate(-50%, 0);
+  }
+
+  .textT {
+    position: absolute;
+    top: 40%;
+    left: 70%;
+    transform: translateX(-50%);
+    margin-left: 6px;
+    margin-top: 8px;
+  }
+</style>
+
+<script src="./app.js"></script>

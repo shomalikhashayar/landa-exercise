@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <div class="spiral-container" id="spiral-container"></div>
+  </body>
+</html>
+<script>
+  function spiral(n) {
+    const m = new Array(n * 2);
+    for (let i = 0; i < n * 2; i++) {
+      m[i] = new Array(n * 2);
+      for (let j = 0; j < n * 2; j++) {
+        m[i][j] = 0;
+      }
+    }
+
+    let i = n,
+      j = n;
+    let numdots = 0;
+    m[i][j] = 1;
+
+    const d = [
+      { i: 1, j: 0 }, // Down
+      { i: 0, j: 1 }, // Right
+      { i: -1, j: 0 }, // Up
+      { i: 0, j: -1 }, // Left
+    ];
+
+    let curDir = 0;
+    let doBreak = false;
+    while (doBreak === false) {
+      const nextDir = curDir % 4;
+
+      for (let k = 1; k < numdots + 1; k++) {
+        i = i + d[nextDir].i;
+        j = j + d[nextDir].j;
+        if (i >= 0 && i < n * 2 && j >= 0 && j < n * 2) {
+          m[i][j] = 1;
+        } else {
+          doBreak = true;
+          break;
+        }
+      }
+
+      curDir += 1;
+      numdots += 1;
+    }
+
+    const spiralContainer = document.getElementById("spiral-container");
+    const dotSize = 20;
+    const lineThickness = 2;
+    for (let i = 0; i < n * 2; i++) {
+      for (let j = 0; j < n * 2; j++) {
+        if (m[i][j] === 1) {
+          const dot = document.createElement("div");
+          dot.className = "dot";
+          dot.style.left = j * (dotSize + lineThickness) + "px";
+          dot.style.top = i * (dotSize + lineThickness) + "px";
+          spiralContainer.appendChild(dot);
+        }
+      }
+    }
+  }
+
+  spiral(10);
+</script>
+<style>
+  .dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: black;
+    border-radius: 100%;
+  }
+</style>
